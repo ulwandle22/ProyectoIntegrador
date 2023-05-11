@@ -1,5 +1,5 @@
 
-package com.portfolio.msh.interfase;
+package com.portfolio.msh.Interface;
 
 import com.portfolio.msh.entity.Persona;
 import java.util.List;

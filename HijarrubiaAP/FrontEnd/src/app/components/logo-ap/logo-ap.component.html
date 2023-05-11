@@ -15,7 +15,8 @@
             <a href="https://www.instagram.com/ulwandle22/"><img src="../../../assets/Logos proyecto/instagram.png" id="instagram"></a>
             <a href="https://www.linkedin.com/in/martina-hijarrubia-663479221/"><img src="../../../assets/Logos proyecto/linkedin.png" id="linkedin"></a>
             <a href="https://twitter.com/Hjrkomorebi"><img src="../../../assets/Logos proyecto/twitter.png" id="twitter"></a>
-        <button type="button" class="btn btn-outline-light">INGRESO</button>
+            <button type="button" class="btn btn-outline-light" (click)="login()" *ngIf="!isLogged">INGRESO</button>
+        
     </div>
    </div>
 </div>

@@ -1,10 +1,11 @@
 
-package com.portfolio.msh.controler;
+package com.portfolio.msh.controller;
 
 import com.portfolio.msh.entity.Persona;
-import com.portfolio.msh.interfase.IPersonaService;
+import com.portfolio.msh.Interface.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,17 +22,21 @@ public class PersonaController {
     private String NuevoApellido;
     private String NuevoImg;
     
+    
     @GetMapping ("/personas/traer")
     public List<Persona> getPersona(){
         return IPersonaService.getPersona();
     } 
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/personas/crear")
     public String createPersona(@RequestBody Persona persona){
         IPersonaService.savePersona(persona);
         return "La persona fue creada correctamente";
     }
     
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping ("/personas/borrar/{id}")
     @SuppressWarnings("empty-statement")
     public String deletePersona (@PathVariable Long id){
@@ -41,6 +46,7 @@ public class PersonaController {
     
     //URL: PUERTO/ personas/ editar/4/nombre & apellido & img
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping ("/personas/editar/{id}")
     public Persona editPersona(@PathVariable Long id, 
                                @RequestParam ("nombre") String nuevoNombre,
